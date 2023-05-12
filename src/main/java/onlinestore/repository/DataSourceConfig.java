@@ -22,10 +22,10 @@ public class DataSourceConfig {
             PGPoolingDataSource dataSource1 = new PGPoolingDataSource();
             dataSource1.setDataSourceName("A Data Source");
             dataSource1.setServerNames(new String[]{"127.0.0.1"});
-            dataSource1.setPortNumber(5433);
-            dataSource1.setDatabaseName("online_store_db");
+            dataSource1.setPortNumber(5432);
+            dataSource1.setDatabaseName("online_store");
             dataSource1.setUser("postgres");
-            dataSource1.setPassword("admin");
+            dataSource1.setPassword("Fail4true1");
             dataSource1.setMaxConnections(10);
 
             dataSource = dataSource1;

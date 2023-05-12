@@ -16,21 +16,26 @@ public class UserRepository {
         DataSource dataSource = DataSourceConfig.dataSource();
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(
-                     "SELECT id, name, nickname, age, password, role, birthDate, mail, avatar FROM \"user\" WHERE nickname ")) {
+                     "SELECT id, name, nickname, age, password, role, birthDate, mail,  FROM \"user\" WHERE nickname = ? ")) {
 
             statement.setString(1, nickname);
             ResultSet resultSet = statement.executeQuery();
 
-
-
             while (resultSet.next()) {
+            Long id = resultSet.getLong("id");
+            String name = resultSet.getString("name");
+            String nickname1 = resultSet.getString("nickname");
+            int age = resultSet.getInt("age");
+            String password = resultSet.getString("password");
+            User.Role role = User.Role.valueOf(resultSet.getString("role"));
+            LocalDate birthDate = resultSet.getDate("birthDate").toLocalDate();
+            String mail = resultSet.getString("mail");
+            byte[] avatar = resultSet.getBytes("avatar");
 
-
-
-
+            User user = new User(id, name, nickname1, age, password, role, birthDate, mail);
+            user.setAvatar(avatar);
+                System.out.println(user);
             }
-
-            System.out.println(users);
 
         } catch (SQLException e) {
             System.out.println(e);
@@ -40,7 +45,7 @@ public class UserRepository {
 
 
     public void save(User user) {
-        DataSource dataSource = DataSource
+        DataSource dataSource = DataSourceConfig.dataSource();
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(
                      "INSERT INTO \"user\" (name, nickname,age, password, role, birthDate, mail, avatar)" +
@@ -60,19 +65,69 @@ public class UserRepository {
     }
 
     public User findByID(Long id) {
-        return usersData.get(id);
+        DataSource dataSource = DataSourceConfig.dataSource();
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(
+                     "SELECT id, name, nickname, age, password, role, birthDate, mail,  FROM \"user\" WHERE id = ? ")) {
+
+            statement.setLong(1, id);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                Long id1 = resultSet.getLong("id");
+                String name = resultSet.getString("name");
+                String nickname1 = resultSet.getString("nickname");
+                int age = resultSet.getInt("age");
+                String password = resultSet.getString("password");
+                User.Role role = User.Role.valueOf(resultSet.getString("role"));
+                LocalDate birthDate = resultSet.getDate("birthDate").toLocalDate();
+                String mail = resultSet.getString("mail");
+                byte[] avatar = resultSet.getBytes("avatar");
+
+                User user = new User(id1, name, nickname1, age, password, role, birthDate, mail);
+                user.setAvatar(avatar);
+                System.out.println(user);
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return null;
     }
 
     public User findByEmail(String mail) {
-        for (User user : usersData.values()) {
-            if (user.getMail().equals(mail)) {
-                return user;
+        DataSource dataSource = DataSourceConfig.dataSource();
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(
+                     "SELECT id, name, nickname, age, password, role, birthDate, mail,  FROM \"user\" WHERE mail = ? ")) {
+
+            statement.setString(1, mail);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                Long id = resultSet.getLong("id");
+                String name = resultSet.getString("name");
+                String nickname1 = resultSet.getString("nickname");
+                int age = resultSet.getInt("age");
+                String password = resultSet.getString("password");
+                User.Role role = User.Role.valueOf(resultSet.getString("role"));
+                LocalDate birthDate = resultSet.getDate("birthDate").toLocalDate();
+                String mail1 = resultSet.getString("mail");
+                byte[] avatar = resultSet.getBytes("avatar");
+
+                User user = new User(id, name, nickname1, age, password, role, birthDate, mail1);
+                user.setAvatar(avatar);
+                System.out.println(user);
             }
+
+        } catch (SQLException e) {
+            System.out.println(e);
         }
         return null;
     }
 
     public List<User> findAll() {
+
         return new ArrayList<>(usersData.values());
     }
 
