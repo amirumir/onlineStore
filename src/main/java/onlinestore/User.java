@@ -1,7 +1,13 @@
 package onlinestore;
 
-import java.time.LocalDate;
+import lombok.Getter;
+import lombok.Setter;
 
+import java.time.LocalDate;
+import java.util.Arrays;
+
+@Getter
+@Setter
 public class User {
 
     private String name;
@@ -15,7 +21,7 @@ public class User {
     private String mail;
     private byte[] avatar;
 
-    enum Role {
+    public enum Role {
         USER,
         ADMIN
     }
@@ -83,6 +89,21 @@ public class User {
 
     public Role getRole() {
         return role;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", age=" + age +
+                ", password='" + password + '\'' +
+                ", id=" + id +
+                ", role=" + role +
+                ", birthDate=" + birthDate +
+                ", mail='" + mail + '\'' +
+                ", avatar=" + Arrays.toString(avatar) +
+                '}';
     }
 
     public String getName() {
