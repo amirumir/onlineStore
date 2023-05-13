@@ -474,8 +474,8 @@ public class RegistrationForm {
                 System.out.println("nickname taken");
                 updateUserInfo(user);
             }
-            user.setNickname(updatedNickname);
-            userRepository.update(user);
+//            user.setNickname(updatedNickname);
+//            userRepository.update(user);
         }
         if (enteredNumber == 3) {
             System.out.println("Year of birth:");
