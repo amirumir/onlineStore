@@ -1,4 +1,4 @@
-CREATE DATABASE online_store.sql
+CREATE DATABASE online_store;
 
 CREATE TABLE channel(
 
@@ -23,7 +23,7 @@ sender VARCHAR,
 receiver VARCHAR,
 subject VARCHAR,
 letter_body VARCHAR
-)
+);
 
 CREATE TABLE "user" (
 name VARCHAR,
@@ -35,11 +35,11 @@ role VARCHAR,
 birth_date VARCHAR,
 mail VARCHAR,
 avatar SMALLINT[]
-)
+);
 
-SELECT 'user' FROM "user" WHERE nickname = '';
-SELECT 'user' FROM "user" WHERE name = '';
+SELECT * FROM "user" WHERE nickname = '';
+SELECT * FROM "user" WHERE name = '';
 DELETE FROM "user" WHERE name = '';
-SELECT 'user' FROM "user" WHERE role = 'USER';
-SELECT 'user' FROM "user" WHERE role = 'ADMIN';
+SELECT * FROM "user" WHERE role = 'USER';
+SELECT * FROM "user" WHERE role = 'ADMIN';
 

@@ -159,12 +159,13 @@ public class UserRepository {
 
 
 
-    public void updateName() {
+    public void updateName(String name, Long id) {
         DataSource dataSource = DataSourceConfig.dataSource();
         try (Connection connection = dataSource.getConnection();
-             Statement statement = connection.createStatement()) {
-            statement.executeUpdate(
-                    "UPDATE \"user\" SET name = ? WHERE id = ?");
+             PreparedStatement statement = connection.prepareStatement("UPDATE \"user\" SET name = ? WHERE id = ?")) {
+
+            statement.setString(1, name);
+            statement.setLong(2,id);
 
         } catch (SQLException e) {
             e.printStackTrace();

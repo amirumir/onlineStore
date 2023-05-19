@@ -151,7 +151,7 @@ public class RegistrationForm {
 
             System.out.println("Letter body");
             String letterBody = scanner.nextLine();
-            Letter letter = new Letter(user.getMail(), receiverAddress, Letter.LetterType.SENT, subject, letterBody);
+            Letter letter = new Letter(user.getMail(), receiverAddress, subject, letterBody);
             mailRepository.sendLetter(user.getMail(), letter);
             enteredAsUser(user);
         }
@@ -202,14 +202,14 @@ public class RegistrationForm {
             usersOwnChannels(user);
         }
         if (enteredNumber == 4) {
-           createChannel(user);
+            createChannel(user);
         }
         if (enteredNumber == 5) {
             enteredAsUser(user);
         }
     }
 
-    public void followedChannels(User user)  {
+    public void followedChannels(User user) {
         for (Channel channel : mapChannelRepository.findFollowedChannelsByUserId(user.getId())) {
             System.out.println("- " + channel.getId() + " - " + channel.getName() + " - ");
         }
@@ -370,7 +370,8 @@ public class RegistrationForm {
             addDocuments(user);
         }
     }
-    public void addDocuments(User user){
+
+    public void addDocuments(User user) {
         System.out.println("Enter file Path:");
         String enteredFilePath = scanner.nextLine();
         System.out.println("Введите название документа");
@@ -427,7 +428,7 @@ public class RegistrationForm {
             updateUserInfo(user);
         }
         if (enteredNumber == 2) {
-            try  {
+            try {
 //                OutputStream out = new BufferedOutputStream(new FileOutputStream("avatar.png"));
 //                out.write(user.getAvatar());
 //                ByteArrayInputStream inputStream = new ByteArrayInputStream(user.getAvatar());
@@ -440,7 +441,7 @@ public class RegistrationForm {
 //                byte [] data = bos.toByteArray();
                 ByteArrayInputStream bis = new ByteArrayInputStream(user.getAvatar());
                 BufferedImage bImage2 = ImageIO.read(bis);
-                ImageIO.write(bImage2, "jpg", new File("output.jpg") );
+                ImageIO.write(bImage2, "jpg", new File("output.jpg"));
 
                 System.out.println("image created");
             } catch (IOException e) {
@@ -510,7 +511,7 @@ public class RegistrationForm {
             System.out.println("Add path to image file");
             try {
                 user.setAvatar(Files.readAllBytes(Paths.get(scanner.nextLine())));
-            }catch (IOException e){
+            } catch (IOException e) {
                 updateUserInfo(user);
             }
         }

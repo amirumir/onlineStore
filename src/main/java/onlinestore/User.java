@@ -1,5 +1,6 @@
 package onlinestore;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,17 +9,17 @@ import java.util.Arrays;
 
 @Getter
 @Setter
-public class User {
 
+public class User {
+    private Long id;
     private String name;
     private String nickname;
     private int age;
     private String password;
-    private Long id;
     private Role role;
-
     private LocalDate birthDate;
     private String mail;
+
     private byte[] avatar;
 
     public enum Role {
@@ -29,15 +30,16 @@ public class User {
 
     public User(Long id, String enteredName, String enteredNickname, int enteredAge,
                 String enteredPassword, Role role, LocalDate birthDate, String mail) {
+        this.id = id;
         this.name = enteredName;
         this.nickname = enteredNickname;
         this.age = enteredAge;
         this.password = enteredPassword;
-        this.id = id;
         this.role = role;
         this.birthDate = birthDate;
         this.mail = mail;
         this.avatar = avatar;
+
     }
 
     public void setRole(Role role) {
@@ -67,7 +69,6 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
 
 
     public String getPassword() {
@@ -125,6 +126,66 @@ public class User {
     public void setAvatar(byte[] avatar) {
         this.avatar = avatar;
     }
+
+    public static class UserBuilder {
+        private Long id;
+        private String name;
+        private String nickname;
+        private int age;
+        private String password;
+        private Role role;
+        private LocalDate birthDate;
+        private String mail;
+        private byte[] avatar;
+
+
+        public UserBuilder id(Long id) {
+            this.id = id;
+            return this;
+        }
+
+        public UserBuilder name(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public UserBuilder nickname(String nickname) {
+            this.nickname = nickname;
+            return this;
+        }
+
+        public UserBuilder age(int age) {
+            this.age = age;
+            return this;
+        }
+
+        public UserBuilder password(String password) {
+            this.password = password;
+            return this;
+        }
+
+        public UserBuilder role(Role role) {
+            this.role = role;
+            return this;
+        }
+
+        public UserBuilder birthDate(LocalDate birthDate) {
+            this.birthDate = birthDate;
+            return this;
+        }
+
+        public UserBuilder mail(String mail) {
+            this.mail = mail;
+            return this;
+        }
+
+        public User build() {
+            return new User(id, name, nickname, age, password, role, birthDate, mail);
+        }
+
+
+    }
 }
+
 
 
