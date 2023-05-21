@@ -23,8 +23,6 @@ public class RegistrationForm {
     public static void main(String[] args) {
         RegistrationForm registrationForm = new RegistrationForm();
         registrationForm.startForm();
-
-
     }
 
     MapChannelRepository mapChannelRepository = new MapChannelRepository();
