@@ -14,7 +14,7 @@ public class HasRoleValidation {
 //                    User[] role = user.getClass().getEnumConstants();
 //                    Arrays.toString(role);
 
-                    if (annotation.value().toString().equals(User.Role.USER.toString())) {
+                    if (annotation.value().toString().equals(user.getRole().toString())) {
                         method.invoke(testingRoleValidator, user );
                     } else {
                         System.out.println("No access for this method");

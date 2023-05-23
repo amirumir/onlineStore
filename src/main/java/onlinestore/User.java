@@ -182,8 +182,6 @@ public class User {
         public User build() {
             return new User(id, name, nickname, age, password, role, birthDate, mail);
         }
-
-
     }
 }
 

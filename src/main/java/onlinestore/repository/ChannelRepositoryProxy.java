@@ -9,12 +9,11 @@ public class ChannelRepositoryProxy implements ChannelRepository {
     MapChannelRepository mapChannelRepository = new MapChannelRepository();
     @Override
     public void create(Channel channel) {
-
+        
     }
 
     @Override
     public void follow(Channel channel, Long userId) {
-
     }
 
     @Override
