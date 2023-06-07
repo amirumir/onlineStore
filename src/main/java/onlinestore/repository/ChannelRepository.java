@@ -1,11 +1,12 @@
 package onlinestore.repository;
 
 import onlinestore.Channel;
+import onlinestore.User;
 
 import java.util.List;
 
 public interface ChannelRepository {
-    void create(Channel channel);
+    void create(Channel channel, User user);
 
     void follow(Channel channel, Long userId);
 

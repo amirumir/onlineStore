@@ -1,6 +1,8 @@
 package onlinestore.repository;
 
 import onlinestore.Channel;
+import onlinestore.HasRole;
+import onlinestore.User;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,13 +17,13 @@ public class MapChannelRepository implements ChannelRepository {
     Long idGenerator = 0L;
 
 
-
     public Long generateID() {
         return idGenerator++;
     }
 
+    @HasRole(User.Role.USER)
     @Override
-    public void create(Channel channel) {
+    public void create(Channel channel, User user) {
         Long id = generateID();
         channel.setId(id);
         channelMap.put(id, channel);
@@ -40,19 +42,19 @@ public class MapChannelRepository implements ChannelRepository {
 
     @Override
     public List<Channel> findOwnChannelsByUserId(Long userId) {
-         return channelMap.entrySet()
+        return channelMap.entrySet()
                 .stream()
                 .filter(entry -> entry.getValue().getUserId().equals(userId))
-                 .map(entry -> entry.getValue())
+                .map(entry -> entry.getValue())
                 .collect(Collectors.toList());
     }
 
     @Override
     public List<Channel> findFollowedChannelsByUserId(Long userId) {
-         return channelMap.values()
-                 .stream()
-                 .filter(channel -> channel.getFollowers().contains(userId))
-                 .collect(Collectors.toList());
+        return channelMap.values()
+                .stream()
+                .filter(channel -> channel.getFollowers().contains(userId))
+                .collect(Collectors.toList());
 
     }
 

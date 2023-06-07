@@ -285,7 +285,7 @@ public class RegistrationForm {
         System.out.println("Enter channel name: ");
         channel.setName(scanner.nextLine());
         channel.setUserId((user.getId()));
-        mapChannelRepository.create(channel);
+        mapChannelRepository.create(channel, user);
         channels(user);
     }
 
