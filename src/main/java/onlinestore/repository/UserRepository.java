@@ -48,16 +48,16 @@ public class UserRepository {
         DataSource dataSource = DataSourceConfig.dataSource();
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(
-                     "INSERT INTO \"user\" (name, nickname, age, password, role, birth_date, mail, avatar)" +
-                             "VALUES (?,?,?,?,?,?,?,?)")) {
+                     "INSERT INTO \"user\" (name, nickname, age, password, role, birth_date, mail)" +
+                             "VALUES (?,?,?,?,?,?,?)")) {
             statement.setString(1, user.getName());
             statement.setString(2, user.getNickname());
             statement.setInt(3, user.getAge());
             statement.setString(4, user.getPassword());
             statement.setString(5, user.getRole().toString());
             statement.setDate(6, Date.valueOf(user.getBirthDate()));
+//            statement.setObject(6, user.getBirthDate());
             statement.setString(7, user.getMail());
-            statement.setBytes(8, user.getAvatar());
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -80,7 +80,7 @@ public class UserRepository {
                 int age = resultSet.getInt("age");
                 String password = resultSet.getString("password");
                 User.Role role = User.Role.valueOf(resultSet.getString("role"));
-                LocalDate birthDate = resultSet.getDate("birthDate").toLocalDate();
+                LocalDate birthDate = resultSet.getDate("birth_date").toLocalDate();
                 String mail = resultSet.getString("mail");
                 byte[] avatar = resultSet.getBytes("avatar");
 
@@ -142,7 +142,7 @@ public class UserRepository {
                 String password = resultSet.getString("password");
                 Long id = resultSet.getLong("id");
                 User.Role role = User.Role.valueOf(resultSet.getString("role"));
-                LocalDate birthDate = resultSet.getDate("birthDate").toLocalDate();
+                LocalDate birthDate = resultSet.getDate("birth_date").toLocalDate();
                 String mail = resultSet.getString("mail");
                 byte[] avatar = resultSet.getBytes("avatar");
 

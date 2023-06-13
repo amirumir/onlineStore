@@ -3,9 +3,9 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.48">
     <root id="1">
       <DateStyle>dmy</DateStyle>
-      <IntrospectionStateNumber>767</IntrospectionStateNumber>
+      <IntrospectionStateNumber>775</IntrospectionStateNumber>
       <ServerVersion>15.2</ServerVersion>
-      <StartupTime>1684419352</StartupTime>
+      <StartupTime>1685777894</StartupTime>
       <TimeZones>true ACDT
 true ACSST
 false ACST
@@ -802,7 +802,6 @@ false Zulu
 13183||10|C|G
 13183||-9223372036854775808|U|G
 13183||10|U|G</Grants>
-      <IntrospectionStateNumber>766</IntrospectionStateNumber>
       <ObjectId>5</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
@@ -816,7 +815,7 @@ false Zulu
 13183||10|C|G
 13183||-9223372036854775808|U|G
 13183||10|U|G</Grants>
-      <IntrospectionStateNumber>767</IntrospectionStateNumber>
+      <IntrospectionStateNumber>775</IntrospectionStateNumber>
       <ObjectId>16398</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
@@ -4243,7 +4242,6 @@ false Zulu
     <schema id="263" parent="2" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>766</IntrospectionStateNumber>
       <ObjectId>2200</ObjectId>
       <StateNumber>518</StateNumber>
       <OwnerName>pg_database_owner</OwnerName>
@@ -9266,7 +9264,7 @@ false Zulu
     <schema id="507" parent="3" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>767</IntrospectionStateNumber>
+      <IntrospectionStateNumber>775</IntrospectionStateNumber>
       <ObjectId>2200</ObjectId>
       <StateNumber>518</StateNumber>
       <OwnerName>pg_database_owner</OwnerName>
@@ -9307,7 +9305,7 @@ false Zulu
     </table>
     <table id="513" parent="507" name="user">
       <ObjectId>16419</ObjectId>
-      <StateNumber>763</StateNumber>
+      <StateNumber>772</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
@@ -9464,10 +9462,10 @@ false Zulu
       <TypeId>1043</TypeId>
     </column>
     <column id="537" parent="513" name="birth_date">
-      <DasType>varchar|0s</DasType>
+      <DasType>date|0s</DasType>
       <Position>7</Position>
-      <StateNumber>738</StateNumber>
-      <TypeId>1043</TypeId>
+      <StateNumber>772</StateNumber>
+      <TypeId>1082</TypeId>
     </column>
     <column id="538" parent="513" name="mail">
       <DasType>varchar|0s</DasType>
@@ -9486,7 +9484,7 @@ false Zulu
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16425</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>738</StateNumber>
+      <StateNumber>772</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>

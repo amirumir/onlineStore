@@ -1,10 +1,7 @@
 package onlinestore;
 
 
-import onlinestore.repository.DocumentRepositoryImpl;
-import onlinestore.repository.MailRepository;
-import onlinestore.repository.MapChannelRepository;
-import onlinestore.repository.UserRepository;
+import onlinestore.repository.*;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -24,7 +21,7 @@ public class RegistrationForm {
         RegistrationForm registrationForm = new RegistrationForm();
         registrationForm.startForm();
     }
-
+    ChannelRepositoryProxy channelRepositoryProxy = new ChannelRepositoryProxy();
     MapChannelRepository mapChannelRepository = new MapChannelRepository();
     UserRepository userRepository = new UserRepository();
     DocumentRepositoryImpl documentRepository = new DocumentRepositoryImpl();
@@ -285,7 +282,7 @@ public class RegistrationForm {
         System.out.println("Enter channel name: ");
         channel.setName(scanner.nextLine());
         channel.setUserId((user.getId()));
-        mapChannelRepository.create(channel, user);
+        channelRepositoryProxy.create(channel, user);
         channels(user);
     }
 
